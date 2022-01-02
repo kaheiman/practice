@@ -66,6 +66,21 @@ BST.prototype.preorderTraversal = function () {
   return
 };
 
+BST.prototype.traversalWithLevel = function (level, arr) {
+  if (!this.val) {
+    return;
+  }
+  console.log('level: ', level, arr);
+
+  arr.push(this.val);
+  if (this.left !== null) {
+    this.left.traversalWithLevel(level + 1, arr);
+  }
+  if (this.right !== null) {
+    this.right.traversalWithLevel(level + 1, arr);
+  }
+}
+
 function createBST() {
   var b = new BST(4);
   b.insert(2);
@@ -152,6 +167,7 @@ function main() {
   console.log("postorder list: ", list);
   sum = rangeSumBST(rootNode, 4, 8);
   console.log("[LeetCode 938] sum of bts: ", sum)
+  rootNode.traversalWithLevel(0, []);
 }
 
 main()
