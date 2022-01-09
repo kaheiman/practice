@@ -6,33 +6,52 @@ function TreeNode(val, left, right) {
 }
 
 
+function morris(root) {
+  let curr = root;
+  while (curr) {
+    console.log(curr.val);
+    if (curr.left) {
+      let runner = curr.left;
+      while (runner.right) {
+        runner = runner.right;
+      }
+      runner.right = curr.right;
+      curr.right = curr.left;
+      curr.left = null;
+    } else {
+      curr = curr.right;
+    }
+  }
+}
+
 var root = null;
 
 
 function morrisTraversalPreorderVersionTwo(root) {
   let current = root;
-  const result = [];
   while (current) {
-    if (current.left === null) {
-      result.push(current.val);
+    let runner = current.left;
+    if (runner === null) {
+      console.log(current.val);
       current = current.right;
     }
     else {
-      let previous = current.left;
-      while (previous.right && previous.right !== current) {
-        previous = previous.right;
+      while (runner.right && runner.right !== current) {
+        runner = runner.right;
       }
-      if (!previous.right) {
-        previous.right = current;
-        current = current.left;
-      } else {
-        result.push(current.val);
-        previous.right = null;
+      if (runner.right) {
+        console.log(current.val);
+        runner.right = null;
         current = current.right;
+      } else {
+        console.log(`runner.right: ${current.val}`)
+        console.log(`runner.val: ${runner.val}`)
+        runner.right = current;
+        console.log(`current: ${current.left.val}`)
+        current = current.left;
       }
     }
   }
-  return result;
 }
 
 // Preorder traversal without
@@ -97,11 +116,11 @@ function insertLevelOrderWithNullVal(arr) {
 }
 
 let root2;
-let arr2 = [1, 2, 3, null, null, 4, null, null, 5];
+let arr2 = [1, 2, 3, 4, 5, 6, 7];
 root2 = insertLevelOrderWithNullVal(arr2);
 console.log(root2)
 
 
 // morrisTraversalPreorder(root2);
-
-console.log(morrisTraversalPreorderVersionTwo(root2));
+// morris(root2);
+morrisTraversalPreorderVersionTwo(root2);

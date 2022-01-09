@@ -58,23 +58,23 @@ var zigzagLevelOrder = function (root) {
 };
 
 // dfs
-// var zigzagLevelOrder = function (root) {
-//   const tree = [];
-//   const getZigzagTree = (node = root, dep = 0) => {
-//     if (!node) return;
-//     const isReverse = dep % 2;
+var zigzagLevelOrder = function (root) {
+  const tree = [];
+  const getZigzagTree = (node = root, dep = 0) => {
+    if (!node) return;
+    const isReverse = dep % 2;
 
-//     tree[dep]
-//       ? tree[dep][isReverse ? "unshift" : "push"](node.val)
-//       : (tree[dep] = [node.val]);
+    tree[dep]
+      ? tree[dep][isReverse ? "unshift" : "push"](node.val)
+      : (tree[dep] = [node.val]);
 
-//     node.left && getZigzagTree(node.left, dep + 1);
-//     node.right && getZigzagTree(node.right, dep + 1);
-//   };
+    node.left && getZigzagTree(node.left, dep + 1);
+    node.right && getZigzagTree(node.right, dep + 1);
+  };
 
-//   getZigzagTree();
-//   return tree;
-// };
+  getZigzagTree();
+  return tree;
+};
 
 
 

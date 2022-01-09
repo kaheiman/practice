@@ -11,16 +11,32 @@
 // Input: edges = [[1,2],[5,1],[1,3],[1,4]]
 // Output: 1
 
+// Space complexity = O(n) , where n is edges
+// Time complexity = O(n)
 
 /**
  * @param {number[][]} edges
  * @return {number}
  */
-var findCenter = function (edges) {
+ var findCenter = function(edges) {
   const graph = new Map();
-  for (const [v, e] of edges) {
-    if (graph.get(v)) {
+  for (const [v,e] of edges) {
+      if (graph.get(v)) {
+          graph.get(v).push(e);
+      } else {
+          graph.set(v, [e]);
+      }
 
-    }
+      if (graph.get(e)) {
+          graph.get(e).push(v);
+      } else {
+          graph.set(e, [v]);
+      }
+  }
+
+  for (const [v, e] of graph) {
+      if (e.length === (graph.size -1)) {
+          return v;
+      }
   }
 };
