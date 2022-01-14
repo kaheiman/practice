@@ -1,8 +1,6 @@
 const numberOfConnectedComponents = (n, edges) => {
   let uf= {};
   let graph = new Map();
-  let singleNode = 0;
-  let connectedComponets = 0;
   const cyclePath = [];
 
   const constructGraph = () => {
@@ -57,10 +55,14 @@ const numberOfConnectedComponents = (n, edges) => {
     }
   }
 
+  const connectedComponets = new Set();
+
   for (const key in uf) {
     uf[key] = find(key);
+    connectedComponets.add(uf[key]);
   }
 
+  console.log("size: ", connectedComponets.size);
   console.log('uf: ', uf);
   console.log('cycle path: ', cyclePath);
 }
