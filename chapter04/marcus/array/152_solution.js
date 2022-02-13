@@ -12,7 +12,7 @@ var maxProduct = function(nums) {
   for (let i=1;i<nums.length;i++) {
       // given the new number, the new maximun can have 3 conditions
       // 1. number(+) * prevMax(+) is the largest
-      // 2. number(+) it self is the largest
+      // 2. number(+) it self is the largest , while prev is 0
       // 3. number(-) * prevMin(-) is the largest
       curMax = Math.max(nums[i] * prevMax, nums[i], nums[i] * prevMin);
 

@@ -1,4 +1,5 @@
 // O(n^2)
+// reverse version of bubble sort, every time find the smallest element element and put into the begining of an array
 const selectionSort = (arr) => {
   for (i=0; i < arr.length - 1; i++) {
     let minIdx = i;

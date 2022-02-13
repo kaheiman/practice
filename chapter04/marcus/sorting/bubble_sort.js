@@ -1,4 +1,5 @@
 // O(n^2)
+// Put the largest element to the end of array
 const bubbleSort = (arr) => {
   for (i = 0; i< arr.length -1; i++) {
     for (j = 0; j < arr.length - i; j++) {

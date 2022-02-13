@@ -1,3 +1,6 @@
+// binary search the smallest element first
+// and do binary search again
+// O(LOG(N))
 /**
  * @param {number[]} nums
  * @param {number} target

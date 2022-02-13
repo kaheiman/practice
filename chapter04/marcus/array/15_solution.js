@@ -1,4 +1,4 @@
-// Time complexity n*2
+// Time complexity n^2
 // https://www.youtube.com/watch?v=jXZDUdHRbhY&feature=youtu.be&ab_channel=CoderSnacks
 /**
  * @param {number[]} nums

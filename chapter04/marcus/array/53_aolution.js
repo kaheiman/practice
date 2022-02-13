@@ -1,3 +1,6 @@
+// idea continue to adding the element until end of the array
+// keep compare the best for each iteration
+
 /**
  * @param {number[]} nums
  * @return {number}

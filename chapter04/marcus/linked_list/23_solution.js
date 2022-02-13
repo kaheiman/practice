@@ -1,3 +1,15 @@
+// Complexity Analysis
+
+// Time complexity : O(N\log k)O(Nlogk) where \text{k}k is the number of linked lists.
+
+// The comparison cost will be reduced to O(\log k)O(logk) for every pop and insertion to priority queue. But finding the node with the smallest value just costs O(1)O(1) time.
+// There are NN nodes in the final linked list.
+// Space complexity :
+
+// O(n)O(n) Creating a new linked list costs O(n)O(n) space.
+// O(k)O(k) The code above present applies in-place method which cost O(1)O(1) space. And the priority queue (often implemented with heaps) costs O(k)O(k) space (it's far less than NN in most situations).
+
+
 class minBinaryHeap {
   constructor(comparator) {
     this.data = [];
@@ -79,44 +91,29 @@ class minBinaryHeap {
   }
 }
 
-binaryHeap = new minBinaryHeap();
-binaryHeap.push(25);
-binaryHeap.push(5);
-binaryHeap.push(40);
-binaryHeap.push(40);
-binaryHeap.push(70);
-binaryHeap.push(70);
-binaryHeap.push(90);
-binaryHeap.push(44);
-console.log(binaryHeap.data.join(','));
-
-let a = [];
-a.push(binaryHeap.poll());
-a.push(binaryHeap.poll());
-a.push(binaryHeap.poll());
-a.push(binaryHeap.poll());
-a.push(binaryHeap.poll());
-a.push(binaryHeap.poll());
-console.log("Top 5 item: ", a);
-
-var KthLargest = function (k, nums) {
-  this.k = k;
-  this.heap = new MinHeap();
-  nums.forEach((n) => this.add(n));
-};
-
 /**
- * @param {number} val
- * @return {number}
+ * @param {ListNode[]} lists
+ * @return {ListNode}
  */
-// 1, 2, 3, 4, 5, 6
-KthLargest.prototype.add = function (val) {
-  // always keeps kth terms from right hand size
-  if (this.heap.size() < k) {
-    this.heap.push(val);
-  } else if (this.heap.peek() < val) {
-    this.heap.push(val);
-    this.heap.poll();
-  };
-  return this.heap.peek();
+var mergeKLists = function(lists) {
+    let minHeap = new minBinaryHeap((parent, child) => {
+        if (parent === undefined || child === undefined) return false
+        return parent.val - child.val
+    });
+    for (let head of lists) {
+        if (head) {
+          minHeap.push(head);
+        }
+    }
+    const dummy = new ListNode();
+    let tail = dummy;
+    while (minHeap.getSize()) {
+        let {val, next} = minHeap.poll();
+        tail.next = new ListNode(val);
+        tail = tail.next;
+        if (next !== null) {
+            minHeap.push(next);
+        }
+    }
+    return dummy.next;
 };
