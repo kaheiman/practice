@@ -51,7 +51,7 @@ dogs.push("Chihuahua"); // add new element to the end
 dogs.shift(); // remove first element
 dogs.unshift("Chihuahua"); // add new element to the beginning
 dogs.splice(2, 0, "Pug", "Boxer"); // add elements (where, how many to remove, element list) // must 0 to add
-dogs.slice(1, 4); // elements from [1] to [4-1] // deep copy
+dogs.slice(1, 4); // elements from [1] to [4-1] // deep copy, but not for array of object
 dogs.sort(); // sort string alphabetically
 dogs.reverse(); // sort string in descending order
 // 1.If compare (a,b) is less than zero, the sort( ) method sorts a to a lower index than b. In other words, a will come first.
