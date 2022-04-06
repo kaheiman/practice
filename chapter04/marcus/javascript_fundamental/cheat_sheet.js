@@ -76,6 +76,11 @@ const index = arr.findIndex((object) => { // return first index
 	return object.id === "b";
 });
 
+let c = [{a: 1, b: 2}, {a: 2, b:3}];
+let d = [...c]; // not deep copy
+let a = {a: 2, b: 3};
+let b = {...a} // deep copy
+
 // Map related - key-value pairs
 // key can be any type
 const map1 = new Map();
