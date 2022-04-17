@@ -27,6 +27,7 @@ const constructDirectedGraphWithTopologicalSort = (edges) => {
     }
     indegree[e]++;
   }
+  console.log('indegree: ', indegree)
   return [graph, indegree];
 }
 
