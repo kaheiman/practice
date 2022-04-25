@@ -23,6 +23,7 @@ abc.indexOf("lmno");            // find substring, -1 if doesn't contain
 abc.slice(3, 6);                // cuts out "def", negative values count from behind
 abc.slice(abc.length - 1)       // cuts out last character
 abc.slice(1)                    // cuts out from first character to the end
+abc.slice(999, 10000)           // out of bound return empty array []
 abc.substring(3, 6)             // same as slice
 abc.replace("abc","123");       // find and replace, takes regular expressions
 abc.toUpperCase();              // convert to upper case
