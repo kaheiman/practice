@@ -16,6 +16,8 @@ const binary_search_cloest_element = (arr, target) => {
 	if (arr.length === 0) return -1;
 	let start = 0;
 	let end = arr.length - 1;
+	// start < end -> end = the smallest number lower than target;
+  // start <= end -> end = ceiling of the target
 	while (start < end) {
 		let mid = Math.floor(start + (end - start) / 2);
 		if (arr[mid] === target) return mid;

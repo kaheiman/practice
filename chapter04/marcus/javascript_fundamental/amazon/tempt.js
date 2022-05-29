@@ -1,20 +1,20 @@
-console.log(1)
+const pr = new Promise((r, re) => {
+  setTimeout(() => {
+    r("ppp")
+  }, 1000)
 
-setTimeout(() => { console.log(2) }, 5)
-setTimeout(() => { console.log(3) }, 0)
+  setTimeout(() => {
+		re("pppsss");
+	}, 3000);
+})
 
-// new Promise((resolve, reject) => {
-//   resolve()
-//   console.log(10)
-// }).then(() => {
-//   console.log(9)
-// })
-
-// new Promise((resolve, reject) => {
-//   resolve()
-// }).then(() => {
-//   console.log(11)
-// })
-
-
-console.log(7)
+pr.then((arg) => {
+  console.log(arg)
+  return new Promise((r, re) => {
+    re("ccc")
+  }).catch((err) => {
+    console.log("sss", err)
+  })
+}).catch((err) => {
+  console.log(err)
+})

@@ -58,10 +58,10 @@ dogs.reverse(); // sort string in descending order
 // 1.If compare (a,b) is less than zero, the sort( ) method sorts a to a lower index than b. In other words, a will come first.
 // 2.If compare (a,b) is greater than zero, the sort( ) method sort b to a lower index than a, i.e., b will come first.
 // 3.If compare (a,b) returns zero, the sort ( ) method considers a equals b and leaves their positions unchanged.
-x.sort(function (a, b) {
+x.sort(function (a, b) { // 3, 2, 1 -> 1, 2, 3
 	return a - b;
 }); // numeric sort
-x.sort(function (a, b) {
+x.sort(function (a, b) { // 1, 2, 3 -> 3, 2, 1
 	return b - a;
 }); // numeric descending sort
 ["cat", "dog", "elephant", "bee", "ant"].sort((a, b) => {
