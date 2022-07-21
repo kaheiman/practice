@@ -78,7 +78,6 @@ func update2dArray(friends [][]bool) {
 }
 
 func main() {
-
 	mySlice := map[string]string{"a": "123", "b": "456", "c": "789"}
 	mySlice["a"] = "999999"
 	fmt.Printf("mySlicc %s \n", mySlice)

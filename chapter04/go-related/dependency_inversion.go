@@ -2,7 +2,10 @@
 // Click here and start typing.
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 type PaymentClient interface {
 	Authorize()
@@ -31,9 +34,24 @@ func NewPaypalClient() PaymentClient {
 	}
 }
 
+var ErrInvalidDomain = errors.New("invalid domain")
+
 func Create() {
 	stripeClient, _ := NewStripeClient().(*StripeClient)
 	paypalClient, _ := NewPaypalClient().(*PaypalClient)
+	arr := []interface{}{stripeClient, paypalClient}
+
+	for _, value := range arr {
+		switch value.(type) {
+		case *StripeClient:
+			fmt.Printf("stripe %+v", value.(*StripeClient).resources)
+		case *PaymentClient:
+			fmt.Printf("paypal %+v", value)
+		default:
+			fmt.Printf("no type has found %+v", ErrInvalidDomain)
+		}
+
+	}
 
 	stripeClient.CreateOrder()
 	paypalClient.Halo()

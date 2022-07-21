@@ -30,3 +30,4 @@
   }
   return one;
 };
+console.log(climbStairs(5));

@@ -1,3 +1,5 @@
+// Time complexity O(m * n)
+
 var numIslands = function (grid) {
   let count = 0;
 

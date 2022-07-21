@@ -4,7 +4,6 @@ const numberOfConnectedComponents = (n, edges) => {
   const cyclePath = [];
 
   const constructGraph = () => {
-    console.log(graph);
     for (const [v,e] of edges) {
       console.log(v, e)
       if(graph.has(v)) {
@@ -19,6 +18,7 @@ const numberOfConnectedComponents = (n, edges) => {
       }
     }
   }
+
   const find = (node) => {
     if (!uf[node]) {
       uf[node] = node;
@@ -47,6 +47,8 @@ const numberOfConnectedComponents = (n, edges) => {
   // 4-5 6
   constructGraph();
 
+  console.log('g: ', graph);
+
   for (const [v,e] of edges) {
     if (find(v) === find(e)) {
       cyclePath.push([v,e]);
@@ -68,3 +70,8 @@ const numberOfConnectedComponents = (n, edges) => {
 }
 
 numberOfConnectedComponents(10, [[1,2], [2,3], [4,1], [5,2], [4,5], [6,3]])
+numberOfConnectedComponents(10, [
+	[0, 1],
+	[1, 2],
+	[3, 4],
+]);
