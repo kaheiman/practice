@@ -1,16 +1,12 @@
 // Time complexity nlog(n)
 
 const merge = (leftArr, rightArr) => {
-  let l = 0;
-  let r = 0;
   let output = [];
   while (leftArr.length > 0 && rightArr.length > 0) {
     if (leftArr[0] < rightArr[0]) {
       output.push(leftArr.shift());
-      l++;
     } else {
       output.push(rightArr.shift());
-      r++;
     }
   }
   return [...output, ...leftArr, ...rightArr]
