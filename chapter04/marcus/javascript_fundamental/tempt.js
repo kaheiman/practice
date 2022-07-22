@@ -1,6 +1,3 @@
-// Space complexity is N^2
-
-
 const tp = (verticles, edges) => {
   const graph = new Map()
   const inDegree = new Map()
