@@ -59,3 +59,9 @@ result1 = find_subsets([1, 5, 3, 3]);
 result1.forEach((subset) => {
 	console.log(subset);
 });
+
+//  the number of subsets doubles as we add each element to all the existing subsets, therefore, we will have a total of O(2^N) where n is number
+//  of element. And since we construct a new subset from an existing set, therefore, the time complexity of the above is n * O(2^N)
+
+// space complexity is same as time complexity
+
