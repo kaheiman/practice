@@ -77,6 +77,7 @@ const dp = (weights, profits, names, capacity) => {
   const dfs = (itemList, capacity, currentIndex) => {
     if (capacity < 0 || currentIndex >= itemList.length) return 0
     cache[currentIndex] = cache[currentIndex] || []
+    console.log('cache: ', cache)
     if (typeof cache[currentIndex][capacity] !== "undefined") {
 			return cache[currentIndex][capacity];
 		}
@@ -220,14 +221,14 @@ const minSet = (nums) => {
 
 // Step 1: Find all subsets
 // console.log('subset: \n', subset([1,2,3,7]))
-var profits = [1, 6, 10, 16, 22, 27, 28, 33, 77, 99, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 88];
+var profits = [1, 6, 10, 16];
 var weights = [
-	1, 2, 3, 5, 6, 7, 8, 33, 77, 99, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 88,
+	1, 2, 3, 5
 ];
 
 // Problem One
 var names = ['Apple', 'Orange', 'Banana', 'Melon'];
-console.log("knapsack: \n", dp(weights, profits, names, 7));
+console.log("knapsack: \n", dp(weights, profits, names, 3));
 console.log("knapsack: \n", dp(weights, profits, names, 6));
 
 
