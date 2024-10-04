@@ -1,55 +1,67 @@
-class CoAppearingString {
-  constructor() {
-    this.coAppearingStrings = new Map();
-  }
+class OccurrencyProcessor {
+	constructor(lists) {
+		this.lists = lists;
+		this.frequentCoOcurrenceMap = new Map();
+	}
 
-  // deduplication
-  processList(list) {
-    for (let i = 0; i < list.length; i++) {
-      const deduplicateSet = new Set(list[i]);
-      const subList = [...deduplicateSet.values()];
-      subList.sort()
-      for (let j = 0; j < subList.length - 1; j++) {
-        for (let k = j + 1; k < subList.length; k++) {
-          let firstElement = subList[j]
-          let secondElement = subList[k];
-          const uniqueIdentifier = `${firstElement},${secondElement}`
-          if (this.coAppearingStrings.has(uniqueIdentifier)) {
-            this.coAppearingStrings.set(
-              uniqueIdentifier,
-              this.coAppearingStrings.get(uniqueIdentifier) + 1
-            );
-          } else {
-            this.coAppearingStrings.set(uniqueIdentifier, 1);
-          }
-        }
-      }
-    }
-  }
+	// Lists row  = m
+	// Item inside each row = n
+	// Time complexity = m * n^2
+	generateFrequentCoOccurrencyMap() {
+		this.lists.forEach((list, _) => {
+			list.forEach((element, idx) => {
+				if (!this.frequentCoOcurrenceMap.has(element)) {
+					this.frequentCoOcurrenceMap.set(element, new Map());
+				}
+				list.forEach((term, termIdx) => {
+					if (termIdx !== idx) {
+						const eleMap = this.frequentCoOcurrenceMap.get(element);
+						if (eleMap.has(term)) {
+							eleMap.set(term, eleMap.get(term) + 1);
+						} else {
+							eleMap.set(term, 1);
+						}
+					}
+				});
+			});
+		});
 
-  getCoappearingList() {
-    return this.coAppearingStrings
-  }
+		console.log("this.frequentCoOcurrenceMap:", this.frequentCoOcurrenceMap);
+	}
+
+	// unique term = n * m * n = n^2 * m
+	getMostFrequentOccurencyTermMap() {
+		const resultTermMap = new Map();
+		const resultTermCountMap = new Map();
+		for (const [key, value] of this.frequentCoOcurrenceMap) {
+			let maxTerm = null;
+			let maxCount = -1;
+			for (const [termKey, termCount] of value) {
+				if (termCount > maxCount) {
+					maxTerm = termKey;
+					maxCount = termCount;
+				}
+			}
+			resultTermMap.set(key, maxTerm);
+			resultTermCountMap.set(key, maxCount);
+		}
+		console.log("resultTermCountMap: ", resultTermCountMap);
+		console.log("resultTermMap: ", resultTermMap);
+	}
 }
 
-
-// Example usage:
+// Example usage
 const lists = [
-	["apple", "banana", "orange"],
-	["banana", "grape", "apple"],
-	["orange", "apple", "apple", "grape"], // Notice duplicate 'apple'
-	["banana", "apple"],
+	["apple", "banana", "cherry"],
+	["banana", "apple", "date"],
+	["cherry", "banana", "date"],
+	["apple", "banana"],
+	["date", "apple"],
 ];
 
-const c = new CoAppearingString(lists);
-c.processList(lists);
-console.log(c.getCoappearingList());
+const processor = new OccurrencyProcessor(lists);
+processor.generateFrequentCoOccurrencyMap();
+processor.getMostFrequentOccurencyTermMap();
 
-
-/**
- Final Complexity Summary
- Time Complexity: O(L * N²), where L is the number of sublists and N is the average number of strings in a sublist.
- Space Complexity: O(L * N²), for storing co-appearing pairs and the unique strings in each sublist.
- *
- */
-
+// Time complexity n^2 * m + m * n^2
+// Space complexity is the same
