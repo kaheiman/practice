@@ -6,6 +6,7 @@
 const topological_sort = (vertices, edges) => {
   console.log('vertices:', vertices);
   console.log("edges:", edges);
+  // {'A' => ['V1', 'V2'], ''B' => ['V3', 'V4']}
   let graph = new Map();
   let inDegree = new Map();
   let hasVisted = new Set();
@@ -19,6 +20,7 @@ const topological_sort = (vertices, edges) => {
       graph.set(p, [c]);
     }
 
+    // number of incoming arrows the vertex has
     if (inDegree.has(c)) {
       inDegree.set(c, inDegree.get(c) + 1);
     } else {

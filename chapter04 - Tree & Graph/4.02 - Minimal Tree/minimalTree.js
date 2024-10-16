@@ -1,6 +1,6 @@
 // Approach: divide and conquer, array and insert into tree
-var Queue = require('./../util/Queue');
-var BST = require('./../util/BST');
+var Queue = require('../util/Queue');
+var BST = require('../util/BST');
 
 var insertBalanced = function(array) {
   var bst = new BST();

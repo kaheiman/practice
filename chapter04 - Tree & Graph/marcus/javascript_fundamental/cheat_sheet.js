@@ -137,6 +137,7 @@ Math.round(4.5); // = 5
 Math.pow(2, 8); // = 256 - 2 to the power of 8
 Math.sqrt(49); // = 7 - square root
 Math.floor();
+Math.ceil();
 Math.max(10, 12); // 12
 Math.max(...[10, 12, 13]); // 13
 

@@ -1,5 +1,5 @@
 /* Import Queue */
-var Queue = require('./../util/Queue.js');
+var Queue = require('../util/Queue.js');
 
 /* Employee class */
 var Employee = function(name) {

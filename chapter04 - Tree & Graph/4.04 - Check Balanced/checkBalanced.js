@@ -1,4 +1,4 @@
-var BST = require('./../util/BST');
+var BST = require('../util/BST');
 
 var checkBalanced = function(bst) {
   // case where left is null and right is not null
