@@ -49,7 +49,7 @@ dogs.toString(); // convert to string: results "Bulldog,Beagle,Labrador"
 dogs.join(" * "); // join: "Bulldog * Beagle * Labrador"
 dogs.pop(); // remove last element
 dogs.push("Chihuahua"); // add new element to the end
-dogs.shift(); // remove first element
+dogs.shift(); // remove first element=
 dogs.unshift("Chihuahua"); // add new element to the beginning
 dogs.splice(2, 0, "Pug", "Boxer"); // add elements (where, how many to remove, element list) // must 0 to add
 dogs.slice(1, 4); // elements from [1] to [4-1] // deep copy, but not for array of object
